@@ -7,7 +7,10 @@ import 'package:ricknmortyapp/character_details.dart';
 
 import './request_handler.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -30,11 +33,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fetch Data Example',
-      theme: ThemeData(primarySwatch: Colors.cyan, fontFamily: 'Inter'),
+      theme: ThemeData(primarySwatch: Colors.cyan),
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 249, 249, 249),
         appBar: AppBar(
           systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
             statusBarIconBrightness:
                 Brightness.dark,
             statusBarBrightness: Brightness.light,
