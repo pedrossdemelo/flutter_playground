@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 class RickNMortyResponse {
   Info? info;
@@ -139,8 +139,8 @@ class Origin {
   }
 }
 
-Future<RickNMortyResponse> fetchRickNMorty() async {
-  final response = await get(Uri.parse('https://rickandmortyapi.com/api/character'));
+Future<RickNMortyResponse> fetchRickNMorty({client = http.Client}) async {
+  final response = await client.get(Uri.parse('https://rickandmortyapi.com/api/character'));
 
   if (response.statusCode == 200) {
     return RickNMortyResponse.fromJson(jsonDecode(response.body));
