@@ -139,8 +139,8 @@ class Origin {
   }
 }
 
-Future<RickNMortyResponse> fetchRickNMorty({client = http.Client}) async {
-  final response = await client.get(Uri.parse('https://rickandmortyapi.com/api/character'));
+Future<RickNMortyResponse> fetchRickNMorty() async {
+  final response = await http.get(Uri.parse('https://rickandmortyapi.com/api/character'));
 
   if (response.statusCode == 200) {
     return RickNMortyResponse.fromJson(jsonDecode(response.body));
